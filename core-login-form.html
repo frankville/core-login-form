@@ -1,0 +1,44 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import"  href="bower_components/paper-input/paper-input.html">
+<link rel="import"  href="bower_components/paper-button/paper-button.html">
+<link rel="import" href="bower_components/paper-ripple/paper-ripple.html">
+
+<polymer-element name="core-login-form" attributes="primaryColor">
+	<template>
+		<style>
+		:host {
+			display: block;
+		    position: relative;
+		    background-color: white;
+		    padding: 20px;
+		    width: 100%;
+		    font-size: 1rem;
+		    font-weight: 250;
+		}
+		#submitButton {
+			background: {{primaryColor}};
+			color: #fff;
+		}
+		</style>
+		<core-card id="coreCard" layout vertical center>
+			<paper-input id="usernameInput" floatingLabel="true" label="Escribí tu nombre de usuario"></paper-input>
+			<paper-input id="passwordInput" type="password" floatingLabel="true" label="Escribí tu contraseña"></paper-input>
+			<paper-button id="submitButton" raisedbutton label="Iniciar Sesión">
+				<paper-ripple id="btnRipple" style="pointer-events: none;"></paper-ripple>
+			</paper-button>
+		</core-card>
+
+	</template>
+	<script>
+		Polymer({
+
+			downAction: function(e) {
+			  this.$.btnRipple.downAction({x: e.x, y: e.y});
+			},
+			upAction: function(e) {
+			  this.$.btnRipple.upAction();
+			}
+
+		});
+	</script>
+<polymer-element>

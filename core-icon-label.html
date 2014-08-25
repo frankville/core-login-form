@@ -1,0 +1,43 @@
+<link rel="import" href="bower_components/core-icons/core-icons.html">
+<link rel="import" href="bower_components/core-icon/core-icon.html">
+
+
+<polymer-element name="core-icon-label" attributes="icon text color">
+	<template>
+		<style>
+			:host {
+				display: inline;
+		      	text-align: center;
+		      	width: 100%;
+			}
+			#core_icon {
+				color: {{color}};
+				margin-right: 10px; 
+			}
+			#maincontainer {
+				position: relative;
+				width: auto;
+				height: auto;
+				padding: 10px;
+			}
+			
+			#lab {
+				width: 100%;
+				color: {{color}};
+			}
+
+
+		</style>
+		<div id="maincontainer" class="container" layout horizontal center>
+			
+			<label id="lab"><core-icon id="core_icon" icon="{{icon}}"></core-icon>{{text}}</label>
+		</div>
+	</template>
+	<script>
+		Polymer("core-icon-label",{
+
+		});
+	</script>
+</polymer-element>
+
+

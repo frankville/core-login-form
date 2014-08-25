@@ -1,7 +1,7 @@
-<link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import"  href="bower_components/paper-input/paper-input.html">
 <link rel="import"  href="bower_components/paper-button/paper-button.html">
 <link rel="import" href="bower_components/paper-ripple/paper-ripple.html">
+<link rel="import" href="core-alert.html">
 
 <polymer-element name="core-login-form" attributes="primaryColor">
 	<template>
@@ -12,31 +12,40 @@
 		    background-color: white;
 		    padding: 20px;
 		    width: 100%;
-		    font-size: 1rem;
-		    font-weight: 250;
+		    font-size: 0.8rem;
+		    font-weight: 200;
 		}
 		#submitButton {
-			background: {{primaryColor}};
-			color: #fff;
+			background: "{{primaryColor}}";
+			color: "#fff";
+		}
+		#algo {
+			margin: 10px;
+			display: none;
 		}
 		</style>
+
 		<core-card id="coreCard" layout vertical center>
+			<core-alert id="algo" type="" message="aosdnoaisd"></core-alert>
 			<paper-input id="usernameInput" floatingLabel="true" label="Escribí tu nombre de usuario"></paper-input>
 			<paper-input id="passwordInput" type="password" floatingLabel="true" label="Escribí tu contraseña"></paper-input>
-			<paper-button id="submitButton" raisedbutton label="Iniciar Sesión">
+			<paper-button id="submitButton" raisedbutton label="Iniciar Sesión" on-click="{{formSubmitted}}">
 				<paper-ripple id="btnRipple" style="pointer-events: none;"></paper-ripple>
 			</paper-button>
 		</core-card>
 
 	</template>
 	<script>
-		Polymer({
+		Polymer("core-login-form", {
 
 			downAction: function(e) {
 			  this.$.btnRipple.downAction({x: e.x, y: e.y});
 			},
 			upAction: function(e) {
 			  this.$.btnRipple.upAction();
+			},
+			formSubmitted: function(event){
+				this.$.algo.style.display = "block";
 			}
 
 		});

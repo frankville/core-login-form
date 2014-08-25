@@ -1,0 +1,67 @@
+
+<link rel="import" href="core-icon-label.html">
+
+
+<polymer-element name="core-alert" attributes="message type">
+	<template>
+		<style>
+			:host {
+				display: inline;
+				width: 95%;
+				font-size: 0.9rem;
+		    	font-weight: 200;
+		    	border-top-left-radius: 5px;
+        		border-top-right-radius: 5px;
+        		border-bottom-right-radius: 5px;
+        		border-bottom-left-radius: 5px;
+        		text-align: center;
+			}
+
+		</style>
+	<core-card id="core_card" layout center>
+		<core-icon-label id="core_icon_label" icon="check" text="{{message}}" color="red"></core-icon-label> 
+	</core-card>
+	</template>
+
+	<script>
+		Polymer("core-alert",{
+			ready: function(){
+				this.showDanger("shut up!alsjdoasbdoasd");
+			},
+
+			showSuccess: function(text){
+				console.log(text);
+				var iconlabel = this.$.core_icon_label;
+				iconlabel.setAttribute("icon","check");
+				iconlabel.setAttribute("text",text);
+				iconlabel.setAttribute("color","#006600");
+				this.style.backgroundColor = "#99CC99";
+			},
+			showInfo: function(text){
+				var iconlabel = this.$.core_icon_label;
+				iconlabel.setAttribute("icon","info");
+				iconlabel.setAttribute("text",text);
+				iconlabel.setAttribute("color","#000099");
+				this.style.backgroundColor = "#6699FF";
+			},
+			showWarning: function(text){
+				var iconlabel = this.$.core_icon_label;
+				iconlabel.setAttribute("icon","warning");
+				iconlabel.setAttribute("text",text);
+				iconlabel.setAttribute("color","#CC9900");
+				this.style.backgroundColor = "#FFFF99";
+			},
+			showDanger: function(text){
+				var iconlabel = this.$.core_icon_label;
+				iconlabel.setAttribute("icon","error");
+				iconlabel.setAttribute("text",text);
+				iconlabel.setAttribute("color","#B84D4D");
+				this.style.backgroundColor = "#F8EDED";
+				this.style.border = "1px solid #E6CCCC";
+
+			}
+
+		});
+	</script>
+
+</polymer-element>

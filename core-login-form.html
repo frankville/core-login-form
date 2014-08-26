@@ -1,9 +1,10 @@
 <link rel="import"  href="bower_components/paper-input/paper-input.html">
 <link rel="import"  href="bower_components/paper-button/paper-button.html">
 <link rel="import" href="bower_components/paper-ripple/paper-ripple.html">
+<link rel="import" href="bower_components/paper-shadow/paper-shadow.html">
 <link rel="import" href="core-alert.html">
 
-<polymer-element name="core-login-form" attributes="primaryColor">
+<polymer-element name="core-login-form" attributes="primaryColor rippleColor">
 	<template>
 		<style>
 		:host {
@@ -15,24 +16,37 @@
 		    font-size: 0.8rem;
 		    font-weight: 200;
 		}
+		#coreCard {
+				border: 1px solid white;
+				border-radius: 5px;
+		}
 		#submitButton {
-			background: "{{primaryColor}}";
-			color: "#fff";
+			background-color: {{primaryColor}};
+			color: #fff;
+		}
+		#btnRipple {
+			color: {{rippleColor}};
 		}
 		#algo {
 			margin: 10px;
 			display: none;
 		}
 		</style>
+		<div class="card">
+			<paper-shadow z="1"  layout vertical center>
+				<core-alert id="algo" type="warning" message="aosdnoaisd"></core-alert>
+				<paper-input id="usernameInput" floatingLabel="true" label="Escribí tu nombre de usuario"></paper-input>
+				<paper-input id="passwordInput" type="password" floatingLabel="true" label="Escribí tu contraseña"></paper-input>
+				<paper-button id="submitButton" raisedButton label="Iniciar Sesión" on-click="{{formSubmitted}}">
+					<paper-ripple id="btnRipple" class="circle" fit></paper-ripple>
+				</paper-button>
 
-		<core-card id="coreCard" layout vertical center>
-			<core-alert id="algo" type="" message="aosdnoaisd"></core-alert>
-			<paper-input id="usernameInput" floatingLabel="true" label="Escribí tu nombre de usuario"></paper-input>
-			<paper-input id="passwordInput" type="password" floatingLabel="true" label="Escribí tu contraseña"></paper-input>
-			<paper-button id="submitButton" raisedbutton label="Iniciar Sesión" on-click="{{formSubmitted}}">
-				<paper-ripple id="btnRipple" style="pointer-events: none;"></paper-ripple>
-			</paper-button>
-		</core-card>
+			</paper-shadow>
+
+		</div>
+		<!--<core-card id="coreCard" layout vertical center>
+			
+		</core-card> -->
 
 	</template>
 	<script>
@@ -45,6 +59,7 @@
 			  this.$.btnRipple.upAction();
 			},
 			formSubmitted: function(event){
+				this.$.algo.showSuccess("gvououbobo");
 				this.$.algo.style.display = "block";
 			}
 
